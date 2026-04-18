@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap');
+@config "../../tailwind.config.js";
+@import "tailwindcss";
+
+
+@layer base {
+  body {
+    @apply font-poppins;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+hide scrollbar but keep scroll
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Ultra clean thin scrollbar */
+.custom-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #d1d5db; /* light gray */
+  border-radius: 10px;
+
+}
+
+/* Remove arrows (Chrome / Edge) */
+.custom-scroll::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Firefox */
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+  scrollbar-gutter: stable;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 10px
+
+}
+footer {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
