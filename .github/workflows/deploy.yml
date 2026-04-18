@@ -26,9 +26,8 @@ jobs:
         working-directory: my-next-app
         run: npm run build
 
-      # 🔥 IMPORTANT: debug actual path
-      - name: Check build output
-        run: ls -R ./my-next-app
+      - name: Check output folder
+        run: ls -R my-next-app/out
 
       - name: Clean EC2 folder
         uses: appleboy/ssh-action@v1.0.3
@@ -45,5 +44,5 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "my-next-app/dist/*"
+          source: "my-next-app/out/*"
           target: "/var/www/html"

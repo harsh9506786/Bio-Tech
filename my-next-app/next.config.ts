@@ -1,9 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  output: "export",
+
+  // 🔥 ADD THIS (important for CI/CD stability)
+  distDir: "out",
+
   reactCompiler: true,
+
   images: {
+    unoptimized: true, // 🔥 required for static export
     remotePatterns: [
       {
         protocol: "https",
