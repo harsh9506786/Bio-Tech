@@ -13,19 +13,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy to EC2
+      - name: Install & Build
+        working-directory: my-next-app
+        run: |
+          npm install
+          npm run build
+          npm run export
+
+      - name: Copy files to EC2
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "my-next-app/out/*"
+          target: "/home/ubuntu/Bio-Tech/my-next-app/out"
+          strip_components: 2
+
+      - name: Restart app
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/ubuntu/Bio-Tech
-
-            git pull origin development
-
-            npm install
-            npm run build
-            npm run export
-
             pm2 restart bio-tech
