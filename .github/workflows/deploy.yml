@@ -13,37 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        working-directory: my-next-app
-        run: npm install
-
-      - name: Build project
-        working-directory: my-next-app
-        run: npm run build
-
-      - name: Check output folder
-        run: ls -R my-next-app/out
-
-      - name: Clean EC2 folder
+      - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            sudo rm -rf /var/www/html/*
+            cd /home/ubuntu/Bio-Tech
 
-      - name: Deploy to EC2
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
-          key: ${{ secrets.EC2_SSH_KEY }}
-          source: "my-next-app/out/*"
-          target: "/var/www/html"
-          strip_components: 1
+            git pull origin development
+
+            npm install
+            npm run build
+            npm run export
+
+            pm2 restart bio-tech
