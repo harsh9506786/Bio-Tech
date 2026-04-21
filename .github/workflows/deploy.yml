@@ -9,6 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: my-next-app   # 👈 THIS IS THE FIX
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,11 +28,11 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy to EC2 via SSH
+      - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
+          username: ubuntu
           key: ${{ secrets.EC2_KEY }}
           script: |
             cd ~/app/my-next-app
