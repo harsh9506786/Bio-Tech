@@ -30,6 +30,7 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           source: "my-next-app/out/*"
           target: "/home/ubuntu/out"
+          strip_components: 2
 
       - name: Deploy on EC2
         uses: appleboy/ssh-action@v1.0.3
