@@ -174,7 +174,7 @@ export default function HeroSection() {
                   "linear-gradient(90deg, #C9A24A 0%, #F2D27A 50%, #B88A2E 100%)",
               }}
             >
-              ADVANCED MICROBIAL TECHNOLOGY.
+              ADVANCED MICROBIAL TECHNOLOGY
             </span>
           </span>
         </motion.div>
