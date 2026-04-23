@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { X, ArrowLeft, ArrowRight } from "lucide-react";
+import { X, ArrowLeft, ArrowRight, Printer } from "lucide-react";
 import { Product } from "../data/products";
 import Loader from "@/components/ui/Loader";
 
@@ -37,7 +37,81 @@ export const ProductDetail: React.FC<ProductModalProps> = ({
       setCurrentProductIndex(currentProductIndex - 1);
     }
   };
+  const handlePrint = () => {
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) return;
 
+    const content = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>${product.name || "Product Detail"}</title>
+        <style>
+          body { font-family: Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 20px; color: #333; }
+          img { max-width: 100%; height: auto; border-radius: 12px; display: block; margin-bottom: 16px; }
+          h2 { color: #007A3D; font-style: italic; margin-bottom: 2px; }
+          h3 { color: #007A3D; font-style: italic; font-size: 13px; margin-top: 0; }
+          .label { font-weight: bold; text-transform: uppercase; color: #007A3D; font-size: 13px; }
+          .value { color: #555; font-size: 13px; }
+          p { margin: 6px 0; line-height: 1.5; }
+          @media print { body { padding: 10px; } }
+        </style>
+      </head>
+      <body>
+        ${product.banner ? `<img src="${product.banner}" alt="${product.name}" />` : ""}
+        <h2>${product.name || ""}</h2>
+        ${product.product ? `<h3>(${product.product})</h3>` : ""}
+        ${product.activeIngredient ? `<p><span class="label">Active Ingredient:</span><br/><span class="value">${Array.isArray(product.activeIngredient) ? product.activeIngredient.map((item, i) => `(${String.fromCharCode(97 + i)}) ${item}`).join("<br/>") : typeof product.activeIngredient === "object" ? `${(product.activeIngredient as { name: string; concentration?: string }).name}${(product.activeIngredient as { name: string; concentration?: string }).concentration ? ` (${(product.activeIngredient as { name: string; concentration?: string }).concentration})` : ""}` : product.activeIngredient}</span></p>` : ""}
+        ${product.potency ? `<p><span class="label">Potency:</span> <span class="value">${product.potency}</span></p>` : ""}
+        ${product.spectrum ? `<p><span class="label">Spectrum:</span> <span class="value">${typeof product.spectrum === "string" ? product.spectrum : Array.isArray(product.spectrum) ? product.spectrum.join("<br/>") : ""}</span></p>` : ""}
+        ${product.modeOfAction ? `<p><span class="label">Mode of Action:</span> <span class="value">${product.modeOfAction}</span></p>` : ""}
+        ${product.formulation ? `<p><span class="label">Formulation:</span> <span class="value">${product.formulation}</span></p>` : ""}
+        ${
+          product.directionForUse
+            ? `<p><span class="label">Direction For Use:</span><br/><span class="value">${
+                typeof product.directionForUse === "string"
+                  ? product.directionForUse
+                  : Object.entries(product.directionForUse)
+                      .filter(([, v]) => v)
+                      .map(([k, v]) => `<b>${k}:</b> ${v}`)
+                      .join("<br/>")
+              }</span></p>`
+            : ""
+        }
+        ${product.ecoSafety ? `<p><span class="label">Eco Safety:</span> <span class="value">${product.ecoSafety}</span></p>` : ""}
+        ${product.shelfLife ? `<p><span class="label">Shelf Life & Storage:</span> <span class="value">${product.shelfLife}</span></p>` : ""}
+        ${
+          product.packing
+            ? `<p><span class="label">Packing:</span><br/><span class="value">${
+                typeof product.packing === "string"
+                  ? product.packing
+                  : Object.entries(product.packing)
+                      .map(([k, v]) => `<b>${k.toUpperCase()}:</b> ${v}`)
+                      .join("<br/>")
+              }</span></p>`
+            : ""
+        }
+        ${product.furtherinformations ? `<p><span class="label">Further Informations:</span> <span class="value">${product.furtherinformations}</span></p>` : ""}
+        ${product.screenshots?.bottom ? `<img src="${product.screenshots.bottom}" alt="screenshot" style="margin-top:16px;" />` : ""}
+      
+<script>
+  window.onload = () => {
+    setTimeout(() => {
+      window.print();
+    }, 250);
+  };
+  window.onafterprint = () => {
+    window.close();
+  };
+<\/script>
+      </body>
+    </html>
+  `;
+
+    printWindow.document.write(content);
+    printWindow.document.close();
+
+  };
   const handleNextProduct = () => {
     if (
       setCurrentProductIndex &&
@@ -192,6 +266,7 @@ export const ProductDetail: React.FC<ProductModalProps> = ({
         >
           <X size={20} />
         </button>
+
         <div
           ref={scrollContainerRef}
           onTouchStart={onTouchStart}
@@ -219,8 +294,20 @@ export const ProductDetail: React.FC<ProductModalProps> = ({
             />
           </div>
 
+          {/* PRINT BUTTON */}
+          <div className="flex justify-end">
+            <button
+              onClick={handlePrint}
+              className="flex items-center gap-2 bg-green-700 text-white text-sm px-3 py-1.5 rounded-lg shadow hover:bg-green-800 transition"
+              aria-label="Print"
+            >
+              <Printer size={16} />
+              Print this page
+            </button>
+          </div>
+
           {/* PRODUCT NAME */}
-            <div className="leading-tight">
+          <div className="leading-tight">
             <h3 className="text-lg font-bold text-biotech-green italic">
               {product.name}
             </h3>
