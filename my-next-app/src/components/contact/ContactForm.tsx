@@ -47,9 +47,7 @@ export const ContactForm = () => {
     if (!formData.fullName.trim()) newErrors.fullName = "Full name is required";
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
-    }
+    } 
     if (!formData.message.trim())
       newErrors.message = "Please enter your message";
     setErrors(newErrors);
@@ -61,7 +59,7 @@ export const ContactForm = () => {
     setIsSubmitting(true);
     setShowLoader(true);
     // Simulate API call
-    const phoneNumber = "919899987903";
+    const phoneNumber = "7225037332";
 
     const text = `
 *New Enquiry Form Submission*

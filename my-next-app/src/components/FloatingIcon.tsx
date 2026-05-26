@@ -9,7 +9,7 @@ const FloatingIcon = () => {
   const handleClick = () => {
     setLoading(true);
 
-    const phoneNumber = "919899987903";
+    const phoneNumber = "7225037332";
     const message = "Hi, I am interested in your products";
     const encodedMessage = encodeURIComponent(message);
 
