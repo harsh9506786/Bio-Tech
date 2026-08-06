@@ -17,7 +17,7 @@ export function Button1({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
+    "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer";
 
   const variants = {
     primary: "bg-[#0B3D2E] text-white hover:bg-[#082a20] focus:ring-[#0B3D2E]",

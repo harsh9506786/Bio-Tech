@@ -131,7 +131,7 @@ export function ProductRowCard({
         {/* CONTENT */}
         <div className="grow space-y-2 pb-2">
           <div className="leading-tight">
-            <h3 className="text-lg font-bold text-biotech-green italic">
+            <h3 className="text-2xl font-bold text-biotech-green italic">
               {product.name}
             </h3>
 

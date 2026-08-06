@@ -103,7 +103,7 @@ export default function ProductsClient() {
                   setActiveSubCategory(sub.toLowerCase());
                   setMobileDropdownText(sub);
                 }}
-                className={`px-4 py-2 rounded-full text-sm font-medium border whitespace-nowrap transition
+                className={`px-4 py-2 rounded-full text-sm font-medium border whitespace-nowrap transition cursor-pointer
                   ${
                     activeSubCategory === sub.toLowerCase()
                       ? "bg-biotech-green text-white border-biotech-green"

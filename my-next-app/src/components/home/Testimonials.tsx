@@ -149,7 +149,7 @@ export default function Testimonials() {
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prevSlide}
-              className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-green-primary hover:text-green-primary transition"
+              className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-green-primary hover:text-green-primary transition cursor-pointer"
             >
               <ChevronLeftIcon size={20} />
             </button>
@@ -170,7 +170,7 @@ export default function Testimonials() {
 
             <button
               onClick={nextSlide}
-              className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-green-primary hover:text-green-primary transition"
+              className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-green-primary hover:text-green-primary transition cursor-pointer"
             >
               <ChevronRightIcon size={20} />
             </button>

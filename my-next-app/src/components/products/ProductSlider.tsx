@@ -50,14 +50,14 @@ export function ProductSlider({ products }: ProductSliderProps) {
       {/* Buttons */}
       <button
         onClick={prevSlide}
-        className="hidden md:flex absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white rounded-full shadow p-2 hover:bg-gray-100 z-10"
+        className="hidden md:flex absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white rounded-full shadow p-2 hover:bg-gray-100 z-10 cursor-pointer"
       >
         <ChevronLeft className="w-6 h-6 text-gray-700" />
       </button>
 
       <button
         onClick={nextSlide}
-        className="hidden md:flex absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white rounded-full shadow p-2 hover:bg-gray-100 z-10"
+        className="hidden md:flex absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white rounded-full shadow p-2 hover:bg-gray-100 z-10 cursor-pointer"
       >
         <ChevronRight className="w-6 h-6 text-gray-700" />
       </button>

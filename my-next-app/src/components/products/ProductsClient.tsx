@@ -281,7 +281,7 @@ export default function ProductsClient() {
                     setActiveBiostimulantTab("biostimulants");
                   }
                 }}
-                className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-sm sm:text-sm font-medium border whitespace-nowrap transition
+                className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-sm sm:text-sm font-medium border whitespace-nowrap transition cursor-pointer
             ${
               activeSubCategory === sub.toLowerCase()
                 ? "bg-biotech-green text-white border-biotech-green"
@@ -356,7 +356,7 @@ export default function ProductsClient() {
             <div className="flex gap-3 md:ml-10">
               <button
                 onClick={() => setActiveBiostimulantTab("biostimulants")}
-                className={`px-4 py-2 rounded-full border text-sm font-medium
+                className={`px-4 py-2 rounded-full border text-sm font-medium cursor-pointer
         ${
           activeBiostimulantTab === "biostimulants"
             ? "bg-biotech-green text-white border-biotech-green"
@@ -368,7 +368,7 @@ export default function ProductsClient() {
 
               <button
                 onClick={() => setActiveBiostimulantTab("bio sea")}
-                className={`px-4 py-2 rounded-full border text-sm font-medium
+                className={`px-4 py-2 rounded-full border text-sm font-medium cursor-pointer
         ${
           activeBiostimulantTab === "bio sea"
             ? "bg-biotech-green text-white border-biotech-green"
@@ -389,7 +389,7 @@ export default function ProductsClient() {
             <div className="flex gap-3 md:ml-10">
               <button
                 onClick={() => setSeedDressTab("biofertilizers")}
-                className={`px-4 py-2 rounded-full border text-sm font-medium
+                className={`px-4 py-2 rounded-full border text-sm font-medium cursor-pointer
           ${
             seedDressTab === "biofertilizers"
               ? "bg-biotech-green text-white border-biotech-green"
@@ -401,7 +401,7 @@ export default function ProductsClient() {
 
               <button
                 onClick={() => setSeedDressTab("biofungicides")}
-                className={`px-4 py-2 rounded-full border text-sm font-medium
+                className={`px-4 py-2 rounded-full border text-sm font-medium cursor-pointer
           ${
             seedDressTab === "biofungicides"
               ? "bg-biotech-green text-white border-biotech-green"
@@ -470,7 +470,7 @@ export default function ProductsClient() {
                         <div className="flex gap-3 mb-6">
                           <button
                             onClick={() => setSeedDressTab("biofertilizers")}
-                            className={`px-4 py-2 rounded-full border text-sm
+                            className={`px-4 py-2 rounded-full border text-sm cursor-pointer
                 ${
                   seedDressTab === "biofertilizers"
                     ? "bg-biotech-green text-white"
@@ -482,7 +482,7 @@ export default function ProductsClient() {
 
                           <button
                             onClick={() => setSeedDressTab("biofungicides")}
-                            className={`px-4 py-2 rounded-full border text-sm
+                            className={`px-4 py-2 rounded-full border text-sm cursor-pointer
                 ${
                   seedDressTab === "biofungicides"
                     ? "bg-biotech-green text-white"
@@ -500,7 +500,7 @@ export default function ProductsClient() {
                             onClick={() =>
                               setActiveBiostimulantTab("biostimulants")
                             }
-                            className={`px-4 py-2 rounded-full border text-sm
+                            className={`px-4 py-2 rounded-full border text-sm cursor-pointer
                 ${
                   activeBiostimulantTab === "biostimulants"
                     ? "bg-biotech-green text-white"
@@ -512,7 +512,7 @@ export default function ProductsClient() {
 
                           <button
                             onClick={() => setActiveBiostimulantTab("bio sea")}
-                            className={`px-4 py-2 rounded-full border text-sm
+                            className={`px-4 py-2 rounded-full border text-sm cursor-pointer
                 ${
                   activeBiostimulantTab === "bio sea"
                     ? "bg-biotech-green text-white"
@@ -638,7 +638,7 @@ export default function ProductsClient() {
             <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4 sm:px-6 lg:px-12">
               <div className="bg-white rounded-xl p-6 sm:p-8 lg:p-12 max-w-lg w-full relative">
                 <button
-                  className="absolute top-3 right-3 text-gray-500"
+                  className="absolute top-3 right-3 text-gray-500 cursor-pointer"
                   onClick={() => setIsEnquiryOpen(false)}
                 >
                   ✕

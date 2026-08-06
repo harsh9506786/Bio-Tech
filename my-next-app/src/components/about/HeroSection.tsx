@@ -121,6 +121,7 @@ export default function HeroSection() {
     hover:bg-[#007A3D] hover:text-white
     focus:ring-[#007A3D]
     px-8 py-4 text-lg 
+    cursor-pointer
   "
             >
               Contact Us

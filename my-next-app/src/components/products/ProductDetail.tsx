@@ -261,7 +261,7 @@ export const ProductDetail: React.FC<ProductModalProps> = ({
         {/* CLOSE BUTTON */}
         <button
           onClick={onClose}
-          className="absolute -top-3 -right-3 z-10 bg-black text-white rounded-full p-1 shadow hover:bg-gray-800 transition"
+          className="absolute -top-3 -right-3 z-10 bg-black text-white rounded-full p-1 shadow hover:bg-gray-800 transition cursor-pointer"
           aria-label="Close"
         >
           <X size={20} />
@@ -298,7 +298,7 @@ export const ProductDetail: React.FC<ProductModalProps> = ({
           <div className="flex justify-end">
             <button
               onClick={handlePrint}
-              className="flex items-center gap-2 bg-green-700 text-white text-sm px-3 py-1.5 rounded-lg shadow hover:bg-green-800 transition"
+              className="flex items-center gap-2 bg-green-700 text-white text-sm px-3 py-1.5 rounded-lg shadow hover:bg-green-800 transition cursor-pointer"
               aria-label="Print"
             >
               <Printer size={16} />
@@ -308,7 +308,7 @@ export const ProductDetail: React.FC<ProductModalProps> = ({
 
           {/* PRODUCT NAME */}
           <div className="leading-tight">
-            <h3 className="text-lg font-bold text-biotech-green italic">
+            <h3 className="text-3xl font-bold text-biotech-green italic">
               {product.name}
             </h3>
 
