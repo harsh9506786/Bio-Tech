@@ -295,7 +295,7 @@ export const ProductDetail: React.FC<ProductModalProps> = ({
           </div>
 
           {/* PRINT BUTTON */}
-          <div className="flex justify-end">
+          <div className="flex justify-end max-md:mb-4">
             <button
               onClick={handlePrint}
               className="flex items-center gap-2 bg-green-700 text-white text-sm px-3 py-1.5 rounded-lg shadow hover:bg-green-800 transition cursor-pointer"
@@ -307,8 +307,8 @@ export const ProductDetail: React.FC<ProductModalProps> = ({
           </div>
 
           {/* PRODUCT NAME */}
-          <div className="leading-tight">
-            <h3 className="text-3xl font-bold text-biotech-green italic">
+          <div className="leading-tight ">
+            <h3 className="text-xl md:text-2xl font-bold max-md:font-black text-biotech-green italic">
               {product.name}
             </h3>
 
@@ -454,7 +454,7 @@ export const ProductDetail: React.FC<ProductModalProps> = ({
           <div className="sm:hidden flex justify-between mt-8 pb-4">
             <button
               onClick={handlePrevProduct}
-              className="flex items-center gap-1 text-sm text-gray-600"
+              className="flex items-center gap-1 text-sm text-gray-600 cursor-pointer"
             >
               <ArrowLeft size={16} />
               Back
