@@ -308,7 +308,7 @@ export const ProductDetail: React.FC<ProductModalProps> = ({
 
           {/* PRODUCT NAME */}
           <div className="leading-tight ">
-            <h3 className="text-xl md:text-2xl font-bold max-md:font-black text-biotech-green italic">
+            <h3 className="text-xl md:text-2xl font-extrabold max-md:font-black text-biotech-green italic">
               {product.name}
             </h3>
 
